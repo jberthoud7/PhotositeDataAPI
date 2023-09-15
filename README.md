@@ -13,11 +13,13 @@ Created by James Berthoud
   /total-interactions/{user-id}
 
 
+
   /most-liked-posts/{user-id}/top?=count={count}
 
   /most-commented-posts/{user-id}/top?=count={count}
 
   /most-interacted-posts/{user-id}/top?=count={count}
+
 
 
   /liked-by-most/{user-id}/top?=count={count}
@@ -36,6 +38,7 @@ Created by James Berthoud
   /total-interactions/{post-id}
 
 
+
   /most-liked
 
   /most-commented
@@ -43,7 +46,7 @@ Created by James Berthoud
   /most-interacted
 
 
-Note:
+## Note:
 
   1 interaction = 1 like or 1 comment on a post
 
