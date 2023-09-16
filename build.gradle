@@ -19,6 +19,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
 }
 
 tasks.named('test') {

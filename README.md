@@ -6,44 +6,44 @@ Created by James Berthoud
 # Endpoints
 ## /users  
 
-  /total-likes/{user-id}  
+  /total-likes/{username}  
 
-  /total-comments/{user-id} 
+  /total-comments/{username} 
 
-  /total-interactions/{user-id}
-
-
-
-  /most-liked-posts/{user-id}/top?=count={count}
-
-  /most-commented-posts/{user-id}/top?=count={count}
-
-  /most-interacted-posts/{user-id}/top?=count={count}
+  /total-interactions/{username}
 
 
 
-  /liked-by-most/{user-id}/top?=count={count}
+  /most-liked-posts/{username}?count={count}
 
-  /commented-on-most/{user-id}/top?=count={count}
+  /most-commented-posts/{username}?count={count}
 
-  /interacted-with/most//{user-id}/top?=count={count}
+  /most-interacted-posts/{username}?count={count}
+
+
+
+  /liked-by-most/{username}?count={count}
+
+  /commented-on-most/{username}?count={count}
+
+  /interacted-with-most/{username}?count={count}
 
 
 ## /posts
 
-  /total-likes/{post-id}
+  /total-likes/{post_id}
 
-  /total-comments/{post-id}
+  /total-comments/{post_id}
 
-  /total-interactions/{post-id}
+  /total-interactions/{post_id}
 
 
 
-  /most-liked
+  /most-liked?count={count}
 
-  /most-commented
+  /most-commented?count={count}
 
-  /most-interacted
+  /most-interacted?count={count}
 
 
 ## Note:
