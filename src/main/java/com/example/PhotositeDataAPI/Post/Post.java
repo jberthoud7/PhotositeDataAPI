@@ -3,9 +3,13 @@ package com.example.PhotositeDataAPI.Post;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.config.EnableMongoAuditing;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
+@Document(collection = "posts")
+@EnableMongoAuditing
 public class Post {
 
     @Id
@@ -20,10 +24,10 @@ public class Post {
     @LastModifiedDate
     private Date updatedAt;
 
-    public Post(String _image, String _caption, String _username){
-        image = _image;
-        caption = _caption;
-        username = _username;
+    public Post(String image, String caption, String username){
+        this.image = image;
+        this.caption = caption;
+        this.username = username;
     }
 
     public String getId(){

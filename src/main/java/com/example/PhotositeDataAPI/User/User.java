@@ -6,11 +6,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
 import java.util.Date;
 
-@Document(collation = "users")
+@Document(collection = "users")
 @EnableMongoAuditing
 public class User {
 
@@ -18,15 +16,16 @@ public class User {
     private String id;
     private String username;
     private String hashed_pswd;
-    private User[] following;
+    private String[] following;
+    private String[] posts;
     @CreatedDate
     private Date createdAt;
     @LastModifiedDate
     private Date updatedAt;
 
-    public User(String _username, String _password){
-        username = _username;
-        hashed_pswd = DigestUtils.sha256Hex(_password);
+    public User(String username, String hashed_pswd){
+        this.username = username;
+        this.hashed_pswd = hashed_pswd;
     }
 
     public String getId() {
@@ -41,8 +40,12 @@ public class User {
         return hashed_pswd;
     }
 
-    public User[] getFollowing() {
+    public String[] getFollowing() {
         return following;
+    }
+
+    public String[] getPosts() {
+        return posts;
     }
 
     public Date getCreatedAt() {

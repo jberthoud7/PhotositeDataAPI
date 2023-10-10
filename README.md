@@ -3,6 +3,15 @@ API to get data on posts and users
 
 Created by James Berthoud
 
+Initial project generated using Spring Initializr with:
+
+Gradle - Groovy
+Java 17
+3.1.3
+Jar
+Spring Web
+Spring Data MongoDB
+
 # Endpoints
 ## /users  
 

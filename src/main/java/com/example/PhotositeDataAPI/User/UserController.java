@@ -1,15 +1,31 @@
 package com.example.PhotositeDataAPI.User;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.NoSuchElementException;
+
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
+
+    private final UserService userService;
+
+    @Autowired
+    public UserController(UserService _userService){
+        this.userService = _userService;
+    }
+
 
     @GetMapping("/total-likes/{username}")
     public ResponseEntity<Integer> getTotalLikesOnUsersPosts(@PathVariable String username){
-        return null;
+        try{
+            int res = userService.getTotalLikesByUser(username);
+            return ResponseEntity.ok(res);
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("An error occurred getting the total likes");
+        }
     }
 
     @GetMapping("/total-comments/{username}")
