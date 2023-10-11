@@ -40,7 +40,14 @@ public class UserController {
 
     @GetMapping("/total-interactions/{username}")
     public ResponseEntity<Integer> getTotalInteractionsOnUsersPosts(@PathVariable String username){
-        return null;
+        try{
+            int resLikes = userService.getTotalLikesByUser(username);
+            int resComments = userService.getTotalCommentsByUser(username);
+
+            return ResponseEntity.ok(resLikes + resComments);
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("An error occurred getting the total likes");
+        }
     }
 
     @GetMapping("/most-liked-posts/{username}")
