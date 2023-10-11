@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
@@ -51,21 +52,39 @@ public class UserController {
     }
 
     @GetMapping("/most-liked-posts/{username}")
-    public ResponseEntity<Integer> getMostLikedPostsByUser(@PathVariable String username,
-                                                            @RequestParam(name = "count", required = false) int count){
-        return null;
+    public ResponseEntity<List<Integer>> getMostLikedPostsByUser(@PathVariable String username,
+                                                                @RequestParam(name = "count", required = false) int count){
+        try{
+            List<Integer> res = userService.getMostLikedPostsByUser(username, count);
+
+            return ResponseEntity.ok(res);
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("An error occurred getting the total likes");
+        }
     }
 
     @GetMapping("/most-commented-posts/{username}")
-    public ResponseEntity<Integer> getMostCommentedPostsByUser(@PathVariable String username,
+    public ResponseEntity<List<Integer>> getMostCommentedPostsByUser(@PathVariable String username,
                                                                 @RequestParam(name = "count", required = false) int count){
-        return null;
+        try{
+            List<Integer> res = userService.getMostCommentedPostsByUser(username, count);
+
+            return ResponseEntity.ok(res);
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("An error occurred getting the total likes");
+        }
     }
 
     @GetMapping("/most-interacted-posts/{username}")
-    public ResponseEntity<Integer> getMostInteractedPostsByUser(@PathVariable String username,
+    public ResponseEntity<List<Integer>> getMostInteractedPostsByUser(@PathVariable String username,
                                                                       @RequestParam(name = "count", required = false) int count){
-        return null;
+        try{
+            List<Integer> res = userService.getMostInteractedPostsByUser(username, count);
+
+            return ResponseEntity.ok(res);
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("An error occurred getting the total likes");
+        }
     }
 
     @GetMapping("/liked-by-most/{username}")
