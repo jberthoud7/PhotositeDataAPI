@@ -40,4 +40,25 @@ public class UserService {
         }
     }
 
+    public int getTotalCommentsByUser(String username) throws NoSuchElementException {
+        try{
+            int totalComments = 0;
+            User user = userRepository.findByUsername(username);
+            String[] posts = user.getPosts();
+
+            for(String postId : posts){
+                Post post = postRepository.findById(postId).get();
+                if(post != null){
+                    totalComments += post.getComments().length;
+                }
+            }
+
+            return totalComments;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            throw new NoSuchElementException("entry does not exist");
+        }
+    }
+
 }

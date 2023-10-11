@@ -30,7 +30,12 @@ public class UserController {
 
     @GetMapping("/total-comments/{username}")
     public ResponseEntity<Integer> getTotalCommentsOnUsersPosts(@PathVariable String username){
-        return null;
+        try{
+            int res = userService.getTotalCommentsByUser(username);
+            return ResponseEntity.ok(res);
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("An error occurred getting the total likes");
+        }
     }
 
     @GetMapping("/total-interactions/{username}")
